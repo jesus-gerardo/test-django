@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
-from .models import Users
+from api.Users.models import Users
 
 # Create your views here.
-class UserView:
-    def index(request):
+class LoginView:
+    def login(request):
         return JsonResponse({
             "response": True
         }, status=200)
 
-    def store(request):
+    def logout(request):
         pass
