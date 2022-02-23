@@ -11,5 +11,5 @@ class UserView(APIView):
     # @api_view(['POST'])
     def get(self, request):
         queryset = Users.objects.all()
-        serializer  = UserSerializer()
+        serializer  = UserSerializer(queryset, many=True)
         return  Response(serializer.data)
