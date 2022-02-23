@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from .models import Categories
 from .serializers import CategoriesSerializer
 from rest_framework.response import Response
+from .models import Categories
 
 # Create your views here.
 class CategoriesView(APIView):
@@ -16,18 +15,18 @@ class CategoriesView(APIView):
 
     def post(self, request):
         try:
-            valid = CategoriesSerializer(data=request.data)
-            if not valid.is_valid():
+            category = CategoriesSerializer(data=request.data)
+            if not category.is_valid():
                 return Response({
                     'response':False, 
-                    'msg': valid.errors
+                    'msg': category.errors
                 })
-            valid.save()
+            category.save()
 
             return Response({'response':True})
         except Exception as error:
             return Response({
-                'response':True,
+                'response':False,
                 'msg': error
             })
 

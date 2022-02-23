@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+# APPEND_SLASH=False
 ALLOWED_HOSTS = []
 
 
@@ -90,8 +90,8 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=3),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
+    # 'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    # 'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
     'JWT_VERIFY': True,
     'JWT_VERIFY_EXPIRATION': True,
 
