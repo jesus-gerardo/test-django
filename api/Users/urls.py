@@ -2,5 +2,5 @@ from django.urls import path
 from .views import UserView
 
 urlpatterns = [
-    path('', UserView.index)
+    path('', UserView.as_view())
 ]

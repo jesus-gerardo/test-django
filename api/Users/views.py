@@ -1,14 +1,15 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.views import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .models import Users
+from .serializers import UserSerializer
 
 # Create your views here.
-class UserView:
-    def index(request):
-        return JsonResponse({
-            "response": True
-        }, status=200)
+class UserView(APIView):
+    permission_classes = [IsAuthenticated]
 
-    def store(request):
-        pass
+    # @api_view(['POST'])
+    def get(self, request):
+        queryset = Users.objects.all()
+        serializer  = UserSerializer()
+        return  Response(serializer.data)
